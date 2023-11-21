@@ -37,6 +37,10 @@ export class IResult{
     message: any = "";
     data: any = null;
 
+    static SUCCESS = "success";
+    static FAIL = "fail";
+    static ERROR = "error";
+
     constructor(status?: string, message?: any, data?: any){
         if (status)
             this.status = status;
@@ -47,12 +51,17 @@ export class IResult{
     }
 
     // 得到错误返回结果
+    static getFailResult(message?:any){
+        return new IResult(this.FAIL, message, null);
+    }
+
+    // 得到异常返回结果
     static getErrorResult(message?:any){
-        return new IResult("error", message, null);
+        return new IResult(this.ERROR, message, null);
     }
 
     // 得到正确返回结果
     static getSuccessResult(data?:any){
-        return new IResult("success", null, data);
+        return new IResult(this.SUCCESS, null, data);
     }
 }

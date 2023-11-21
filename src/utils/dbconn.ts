@@ -12,5 +12,7 @@ pool.on('connection', msg => {
 pool.on('error', err => {
     console.log('database connection error!');
 })
-
+pool.off("off", msg =>{
+    console.log("database off!");
+})
 export default pool;
