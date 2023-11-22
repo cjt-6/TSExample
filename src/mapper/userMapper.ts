@@ -57,5 +57,6 @@ class userMapper{
         callback(IResult.getSuccessResult(re));
     })
   }
-}}
+}
+
 export default new userMapper();
