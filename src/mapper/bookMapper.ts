@@ -68,5 +68,6 @@ export class bookMapper{
       }
     });
   }
-
 }
+
+export default new bookMapper;

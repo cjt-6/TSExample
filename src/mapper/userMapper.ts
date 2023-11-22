@@ -2,7 +2,7 @@ import dbconn from "../utils/dbconn";
 import { IBorrowHistory, IResult, IUser } from "../types/entity";
 import { MysqlError } from "mysql";
 
-export class userMapper{
+class userMapper{
   // 插入用户
   insertOne(name: string, callback: any){
     dbconn.query("insert into users values(null, ?)", name, (err: MysqlError | null, re:any) => {
@@ -58,3 +58,5 @@ export class userMapper{
     })
   }
 }
+
+export default new userMapper();
