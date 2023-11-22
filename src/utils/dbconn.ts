@@ -4,7 +4,7 @@ import mysql from 'mysql';
 import dbConfig from '../config/dbconfig';
 
 // 创建连接池
-let pool = mysql.createPool(dbConfig)
+let pool = mysql.createPool(dbConfig);
 
 pool.on('connection', msg => {
     // console.log(msg);
