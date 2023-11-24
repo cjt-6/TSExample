@@ -7,9 +7,9 @@ import { NextFunction, Request, Response } from 'express';
 import  systemConfig  from './config/sysConfig';
 
 // 导入路由
-import usersRouter from './routes/api/userController'
-import booksRouter from './routes/api/bookController'
-import borrowRouter from './routes/api/borrowController'
+import usersRouter from './routes/user/userController'
+import booksRouter from './routes/book/bookController'
+import borrowRouter from './routes/borrow/borrowController'
 
 const app = express(); 
 
@@ -37,6 +37,6 @@ app.use(express.json());
 // 引用路由
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
-app.use('/browser', borrowRouter);
+app.use('/borrow', borrowRouter);
 
 export default app;

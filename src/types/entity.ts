@@ -14,7 +14,8 @@ export interface IBook{
 export interface IBorrowHistory{
     id: number,
     userId: number,
-    bookId:number,
+    bookId: number,
+    time: Date, 
 }
 
 // 存储用户的借阅历史
