@@ -22,7 +22,7 @@ app.use(function(err: Error, req: Request, res: Response, next: NextFunction) {
     return res.sendStatus(500); 
 }); 
 
-app.listen(systemConfig.port, function() { 
+app.listen(systemConfig.port, "0.0.0.0", function() { 
     console.log(`the server is start at port ${systemConfig.port}`); 
 }); 
 

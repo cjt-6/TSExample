@@ -1,6 +1,6 @@
 import dbconn from "../../utils/dbconn";
 import { IBook, IBorrowHistory, IResult } from "../../types/entity";
-import { MysqlError } from "mysql";
+import  MysqlError  from "mysql2";
 
 export class bookMapper{
   // 插入图书
@@ -16,7 +16,7 @@ export class bookMapper{
 
   // 查询所有图书
   selectAll(callback: any){
-    dbconn.query("select * from books", (err: MysqlError | null, re: IBook[]) => {
+    dbconn.query("select * from books", (err: any, re: IBook[]) => {
       if (re.length == 0)
         callback(IResult.getFailResult("图书未找到"));
       else
@@ -27,7 +27,7 @@ export class bookMapper{
 
   // 通过id查询指定图书
   selectOneById(id: number, callback: any){
-    dbconn.query("select * from books where id = ?", id, (err, re: IBook[]) => {
+    dbconn.query("select * from books where id = ?", id, (err, re: any) => {
       if (re.length == 0)
         callback(IResult.getFailResult("图书未找到"));
       else
@@ -37,7 +37,7 @@ export class bookMapper{
 
   // 通过bookname查询指定图书
   selectOneByName(name: string, callback: any){
-    dbconn.query("select * from books where bookname = ?", name, (err, re:IBook[]) =>{
+    dbconn.query("select * from books where bookname = ?", name, (err, re:any) =>{
       if (re.length == 0)
         callback(IResult.getFailResult("图书未找到"));
       else

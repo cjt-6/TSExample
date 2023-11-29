@@ -17,7 +17,7 @@ export class borrowMapper{
 
   // 通过图书id查询所有用户记录
   selectBorrowedUsersByBookId(id: number, callback: any){
-    dbconn.query("select * from borrow_history where book_id = ?", id, (err: MysqlError | null, re: IBorrowHistory[]) =>{
+    dbconn.query("select * from borrow_history where book_id = ?", id, (err: any, re: any) =>{
       if (re.length == 0)
         callback(IResult.getFailResult("无记录"));
       else
@@ -27,7 +27,7 @@ export class borrowMapper{
 
   // 通过用户id查询所有图书记录
   selectBorrowedBooksByUserId(id: number, callback: any){
-    dbconn.query("select * from borrow_history where user_id = ?", id, (err: MysqlError | null, re: IBorrowHistory[]) =>{
+    dbconn.query("select * from borrow_history where user_id = ?", id, (err: any, re: any) =>{
       if (re.length == 0)
         callback(IResult.getFailResult("无记录"));
       else

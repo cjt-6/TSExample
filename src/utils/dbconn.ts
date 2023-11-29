@@ -1,4 +1,4 @@
-import mysql from 'mysql';
+import mysql from 'mysql2';
 
 // 获取数据库配置信息
 import dbConfig from '../config/dbconfig';
@@ -7,7 +7,7 @@ import dbConfig from '../config/dbconfig';
 let pool = mysql.createPool(dbConfig);
 
 pool.on('connection', msg => {
-    // console.log(msg);
+    console.log(msg);
 })
 pool.on('error', err => {
     console.log('database connection error!');
@@ -15,4 +15,5 @@ pool.on('error', err => {
 pool.off("off", msg =>{
     console.log("database off!");
 })
+
 export default pool;

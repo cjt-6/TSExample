@@ -5,7 +5,7 @@ import { MysqlError } from "mysql";
 class userMapper{
   // 插入用户
   insertOne(name: string, callback: any){
-    dbconn.query("insert into users values(null, ?)", name, (err: MysqlError | null, re:any) => {
+    dbconn.query("insert into users values(null, ?)", name, (err: any, re:any) => {
       if (err) 
         callback(IResult.getErrorResult(err));
       else {
@@ -28,7 +28,7 @@ class userMapper{
 
   // 通过id查询指定用户
   selectOneById(id: number, callback: any){
-    dbconn.query("select * from users where id = ?", id, (err: MysqlError | null, re: IUser[]) =>{
+    dbconn.query("select * from users where id = ?", id, (err: any, re: any) =>{
       // 回调函数传值
       if (re.length == 0)     // 结果集是一个数组，可以此判断
         callback(IResult.getFailResult("用户未找到"));
@@ -39,7 +39,7 @@ class userMapper{
 
   // 通过username查询指定用户
   selectOneByName(name: string, callback: any){
-    dbconn.query("select * from users where username = ?", name, (err: MysqlError | null, re: IUser[]) =>{
+    dbconn.query("select * from users where username = ?", name, (err: any, re: any) =>{
       // 回调函数传值
       if (re.length == 0)     // 结果集是一个数组，可以此判断
         callback(IResult.getFailResult("用户未找到"));
