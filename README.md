@@ -196,18 +196,52 @@ function containsAny(totalAbilityList: any[], nowAbilityList: any[]): boolean {
     return nowAbilityList.some(ability => totalAbilityList.includes(ability));
 }
 
-// 颜色
-const colorNumberList = [0, 1, 2, 3, 4, 5, 6, 7];
-
-// 轮盘
-const roulette = [];
-
-// 卡包
-const cardBag = [];
-
 // 能力
-const abilityList: { abilityNo: number }[] = [];
+const totalAbilityList: { abilityNo: number }[] = [...touchCardList, ...touchCoinsList, ...cardList, ...coinsList];
 
-function matchAbility() {
-
+function getRandomColor() {
+    return Math.floor(Math.random() * 8);
 }
+function getRandomColorTimes(times: number) {
+    const randomColorList: number[] = [];
+    for (let i = 0; i < times; i++) {
+        randomColorList.push(getRandomColor());
+    }
+    return randomColorList;
+}
+
+const nowAbilityList = [totalAbilityList[1]]
+
+function main() {
+    const luckyColorNumber = 0;
+    const startAddCard = nowAbilityList.reduce((num: number, ability) => {
+        if (ability.abilityNo === 11) num += 2;
+        else if (ability.abilityNo === 12) num += 1;
+
+        return num;
+    }, 0);
+
+    console.log('startAddCard: ', startAddCard);
+    // 卡包
+    const cardBag = getRandomColorTimes(13 + startAddCard);
+    console.log('cardBag: ', cardBag);
+
+    // 轮盘
+    let roulette: number[] = [];
+    while (cardBag.length !== 0) {
+        while (roulette.length !== 8 && cardBag.length !== 0) {
+            roulette.push(cardBag.pop()!);
+        }
+        console.log('roulette: ', roulette);
+        console.log('cardBag: ', cardBag);
+
+        for (let i = 0; i < 8; i++){
+            
+        }
+        roulette = [];
+        console.log("!!!!!!!!!!!!!!!!!!");
+    }
+}
+
+main()
+
